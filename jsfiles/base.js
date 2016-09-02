@@ -5,7 +5,7 @@ class Base {
     this.x = x;
     this.y = y;
     this.update = () => {
-      const ctx = myGameArea.context;
+      const ctx = myGameArea.draw;
       ctx.fillStyle = color;
       ctx.fillRect(this.x, this.y, this.width, this.height);
     }

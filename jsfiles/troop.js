@@ -1,13 +1,13 @@
 class Troop {
-  constructor(x, y) {
+  constructor(x, y, imageTag) {
     this.speedX = 0;
     this.speedY = 0;
     this.x = x;
     this.y = y;
     this.update = () => {
       const img = document.createElement('img');
-      img.setAttribute('src', './smiley-face.png');
-      const ctx = myGameArea.context;
+      img.setAttribute('src', imageTag);
+      const ctx = myGameArea.draw;
       ctx.drawImage(img, this.x, this.y)
     }
     this.newPos = () => {
@@ -37,11 +37,10 @@ class Troop {
     let playerY = this.y;
     let enemyX = enemyTroop.x;
     let enemyY = enemyTroop.y;
-    let radius = 27
     let dx = playerX - enemyX;
     let dy = playerY - enemyY;
     let distance = Math.sqrt(dx * dx + dy * dy);
-    if (distance < 54) {
+    if (distance < 53) {
       return true
     };
     return false;
