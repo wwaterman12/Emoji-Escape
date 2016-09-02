@@ -33,18 +33,22 @@ class Troop {
   }
 
   crash(enemyTroop) {
-    let playerTroopLeft = this.x;
-    let playerTroopTop = this.y;
-    let playerTroopRight = this.x + 54;
-    let playerTroopBottom = this.y + 54;
-    let EnemyTroopLeft = enemyTroop.x;
-    let enemyTroopTop = enemyTroop.y;
-    let enemyTroopRight = enemyTroop.x + 54;
-    let enemyTroopBottom = enemyTroop.y + 54;
-    if ( (playerTroopRight > EnemyTroopLeft) && (playerTroopLeft < enemyTroopRight) &&
-      (playerTroopBottom > enemyTroopTop) && (playerTroopTop < enemyTroopBottom) ) {
-          return true
-        };
+    let playerX = this.x;
+    let playerY = this.y;
+    let enemyX = enemyTroop.x;
+    let enemyY = enemyTroop.y;
+    let radius = 27
+    let dx = playerX - enemyX;
+    let dy = playerY - enemyY;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < 54) {
+      return true
+    };
     return false;
-  }
+  };
 }
+
+
+
+
+
