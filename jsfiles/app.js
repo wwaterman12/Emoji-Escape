@@ -1,5 +1,4 @@
 let playerBase;
-let enemyBase;
 let playerTroop;
 
 const myGameArea = {
@@ -20,6 +19,9 @@ const myGameArea = {
   clear() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
+  stop() {
+    clearInterval(this.interval);
+  }
 };
 
 function updateGameArea() {
