@@ -26,6 +26,10 @@ const myGameArea = {
 };
 
 function updateGameArea() {
+  if (playerTroop.crash(enemyTroop)) {
+    myGameArea.stop();
+    console.log('game has stopped');
+  }
   myGameArea.clear();
   playerTroop.speedX = 0;
   playerTroop.speedY = 0;
@@ -43,6 +47,7 @@ function updateGameArea() {
   };
   playerTroop.newPos();
   playerTroop.update();
+  enemyTroop.update();
   playerBase.update();
 
 };
@@ -51,6 +56,7 @@ function updateGameArea() {
 window.onload = function startGame() {
   myGameArea.start();
   playerBase = new Base(100, 100, 'red', 700, 400);
-  playerTroop = new PlayerTroop(100, 400);
+  playerTroop = new Troop(100, 400);
+  enemyTroop = new Troop(300,400);
 
 }

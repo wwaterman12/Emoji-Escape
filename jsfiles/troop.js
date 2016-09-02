@@ -1,4 +1,4 @@
-class PlayerTroop {
+class Troop {
   constructor(x, y) {
     this.speedX = 0;
     this.speedY = 0;
@@ -33,13 +33,18 @@ class PlayerTroop {
   }
 
   crash(enemyTroop) {
-    let myX = this.x;
-    let myY = this.y;
-    let EnemyToopX = enemyTroop.x;
-    let enemyTroopY = enemyTroop.y;
-    if (myX == EnemyToopX && myY == enemyTroopY) {
-      return true;
-    }
+    let playerTroopLeft = this.x;
+    let playerTroopTop = this.y;
+    let playerTroopRight = this.x + 54;
+    let playerTroopBottom = this.y + 54;
+    let EnemyTroopLeft = enemyTroop.x;
+    let enemyTroopTop = enemyTroop.y;
+    let enemyTroopRight = enemyTroop.x + 54;
+    let enemyTroopBottom = enemyTroop.y + 54;
+    if ( (playerTroopRight > EnemyTroopLeft) && (playerTroopLeft < enemyTroopRight) &&
+      (playerTroopBottom > enemyTroopTop) && (playerTroopTop < enemyTroopBottom) ) {
+          return true
+        };
     return false;
   }
 }
