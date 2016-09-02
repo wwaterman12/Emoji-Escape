@@ -31,4 +31,15 @@ class PlayerTroop {
   moveRight() {
     this.speedX += 1;
   }
+
+  crash(enemyTroop) {
+    let myX = this.x;
+    let myY = this.y;
+    let EnemyToopX = enemyTroop.x;
+    let enemyTroopY = enemyTroop.y;
+    if (myX == EnemyToopX && myY == enemyTroopY) {
+      return true;
+    }
+    return false;
+  }
 }

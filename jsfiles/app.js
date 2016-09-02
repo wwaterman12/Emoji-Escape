@@ -1,5 +1,6 @@
 let playerBase;
 let playerTroop;
+let enemyTroops = [];
 
 const myGameArea = {
   canvas: document.createElement('canvas'),
@@ -11,10 +12,10 @@ const myGameArea = {
     this.interval = setInterval(updateGameArea, 20);
     window.addEventListener('keydown', (e) => {
       this.key = e.keyCode;
-    })
+    });
     window.addEventListener('keyup', (e) => {
       this.key = false;
-    })
+    });
   },
   clear() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -30,21 +31,21 @@ function updateGameArea() {
   playerTroop.speedY = 0;
   if (myGameArea.key && myGameArea.key == 65 || myGameArea.key == 37) {
     playerTroop.moveLeft();
-  }
+  };
   if (myGameArea.key && myGameArea.key == 68 || myGameArea.key == 39) {
     playerTroop.moveRight();
-  }
+  };
   if (myGameArea.key && myGameArea.key == 87 || myGameArea.key == 38) {
     playerTroop.moveUp();
-  }
+  };
   if (myGameArea.key && myGameArea.key == 83 || myGameArea.key == 40) {
     playerTroop.moveDown();
-  }
+  };
   playerTroop.newPos();
   playerTroop.update();
   playerBase.update();
 
-}
+};
 
 
 window.onload = function startGame() {
