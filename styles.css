@@ -1,9 +1,21 @@
 body {
-  background: lightblue;
+  background: url(http://i.imgur.com/4tdrFM7.jpg);
+  background-size: cover;
+}
+
+p {
+  text-align: center;
+  font-family: 'Bungee Shade', cursive;
+  margin: 0 auto;
+}
+
+#title {
+  font-size: 4em;
 }
 
 canvas {
   position: absolute;
   border: 1px solid black;
-  background-color: #76F068;
+  border-radius: 15px;
+  left: 4.2em;
 }

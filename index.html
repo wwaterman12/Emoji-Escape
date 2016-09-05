@@ -3,13 +3,22 @@
 <head>
   <title>My Game</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+  <!-- <script type="text/javascript"
+src="//media.twiliocdn.com/sdk/js/client/v1.3/twilio.min.js"></script> -->
 </head>
 <body>
-<h1 id="my-game">My Game</h1>
+<p id='title'>Emoji Escape</p>
+<p>use 'W'A'S'D' to move your emoji. Try to get to the flag but watch out for other emoji</p>
+<p>hint: I wouldn't recommend staying still for too long either</p>
+<audio src="./game_theme.mp3" autoplay>
+  Your browser does not support the <code>audio</code> element.
+</audio>
 
 <script src="./jsfiles/app.js" type="text/javascript"></script>
 <script src="./jsfiles/troop.js" type="text/javascript"></script>
-<script src="./jsfiles/base.js" type="text/javascript"></script>
+<script src="./jsfiles/update.js" type="text/javascript"></script>
 </body>
 
 

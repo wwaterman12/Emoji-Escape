@@ -1,13 +1,16 @@
+let difficulty;
 let playerBase;
 let playerTroop;
 let enemyTroops = [];
-let individualTroop;
+let playerNumber;
+let emoji = ['./alien.png', './devil.png', './angel-face.png', './ghost.png', './poop.png', './retro.png', './smiley-face.png', './war-face.png', './flag.png']
 
 const myGameArea = {
+  //create the game board
   canvas: document.createElement('canvas'),
   start() {
-    this.canvas.width = 800;
-    this.canvas.height = 500;
+    this.canvas.width = 1300;
+    this.canvas.height = 550;
     this.draw = this.canvas.getContext('2d');
     document.body.appendChild(this.canvas);
     this.counter = 1;
@@ -19,70 +22,57 @@ const myGameArea = {
       this.key = false;
     });
   },
+
+  style() {
+    setInterval(() =>{
+     const r = Math.floor(Math.random()*255);
+     const g = Math.floor(Math.random()*255);
+     const b = Math.floor(Math.random()*255);
+     this.canvas.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${Math.random()})`;
+   }, 2000);
+  },
+
   clear() {
     this.draw.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
+
   stop() {
     clearInterval(this.interval);
+    myGameArea.clear();
+    let lose = window.confirm('Oh no! You touched an emoji :( /n play again?');
+    if (lose) {
+      playerTroop.x = 15;
+      playerTroop.y = 15;
+      myGameArea.start();
+    }
+  },
+
+  win() {
+    clearInterval(this.interval);
+    myGameArea.clear();
+    let win = window.confirm('you win! Play again?');
+    if (win) {
+      playerTroop.x = 15;
+      playerTroop.y = 15;
+      myGameArea.start();
+    }
   }
-  // win() {
-  //   clearInterval(this.interval);
-
-  // }
 };
-
-function updateGameArea() {
-  for (let i=0; i<enemyTroops.length; i++) {
-    if (playerTroop.crash(enemyTroops[i])) {
-    myGameArea.stop();
-    console.log('game has stopped');
-    alert('You touched an emoji! Game over')
-    };
-  };
-  if (playerTroop.crash(enemyTroop)) {
-    myGameArea.stop();
-    console.log('game has stopped');
-  }
-  myGameArea.clear();
-  playerTroop.speedX = 0;
-  playerTroop.speedY = 0;
-  if (myGameArea.key && myGameArea.key == 65) {
-    playerTroop.moveLeft();
-  };
-  if (myGameArea.key && myGameArea.key == 68) {
-    playerTroop.moveRight();
-  };
-  if (myGameArea.key && myGameArea.key == 87) {
-    playerTroop.moveUp();
-  };
-  if (myGameArea.key && myGameArea.key == 83) {
-    playerTroop.moveDown();
-  };
-  playerTroop.newPos();
-  playerTroop.update();
-
-  myGameArea.counter+=1;
-  if (myGameArea.counter == 101) {
-    myGameArea.counter = 1;
-  };
-  console.log(myGameArea.counter);
-  if(myGameArea.counter%100 == 0) {
-    enemyTroops.push(new Troop(Math.floor(Math.random() * myGameArea.canvas.width), Math.floor(Math.random() * myGameArea.canvas.height), './smiley-face.png'));
-  };
-  for(let i=0; i<enemyTroops.length; i++) {
-    enemyTroops[i].update();
-  };
-  enemyTroop.update();
-  playerBase.update();
-
-};
-
 
 window.onload = function startGame() {
+  difficulty = prompt('choose difficulty: easy, normal, hard, impossible');
+    if (difficulty == 'easy') {
+      difficulty = 100;
+    } else if (difficulty == 'normal') {
+      difficulty = 50;
+    } else if (difficulty == 'hard') {
+      difficulty = 25;
+    } else {
+      difficulty = 10;
+    }
   myGameArea.start();
-  playerBase = new Base(100, 100, 'red', 700, 400);
-  playerTroop = new Troop(100, 400, './smiley-face.png');
-  enemyTroop = new Troop(300,400, './smiley-face.png');
-  individualTroop = new Troop(200,350, './smiley-face.png');
+  myGameArea.style();
+  playerBase = new Troop(1250, 500, './flag.png', 50, 50);
+  playerTroop = new Troop(15, 15, './smiley-face.png', 50, 50);
 
 }
