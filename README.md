@@ -2,6 +2,7 @@
 
 ##Intro
 <p> Hi, welcome to Emoji Escape, a game created by me!</p>
+[play it here!](https://wwaterman12.github.io/Emoji-Escape/)
 
 ![Imgur](http://i.imgur.com/gNA9ySIs.jpg)
 
@@ -15,3 +16,5 @@
 <li>watch out for emoji flying at you from the right side of the screen</li>
 <li>Have fun</li>
 </ul>
+
+<https://wwaterman12.github.io/Emoji-Escape/>
